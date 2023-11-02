@@ -37,12 +37,27 @@ function handleSubmit(event) {
     console.log(response.data)
     let roundResult = response.data
     renderRoundResult(roundResult)
+    if(roundResult.marcos === "is correct") {
+      renderWinner('MARCOS')
+    } else if (roundResult.christian === "is correct") {
+      renderWinner('CHRISTIAN')
+    } else if (roundResult.evan === "is correct") {
+      renderWinner('EVAN')
+    } else if (roundResult.jaden === "is correct") {
+      renderWinner('JADEN')
+    }
   })
  
 }
 
 //catalogue our server results as a variable
 
+function renderWinner(name) {
+  document.getElementById('winner').innerHTML = 
+  `
+    <h2>${name} IS THE WINNER!!</h2>
+  `
+  }
 
 
 function renderRoundResult(results){
