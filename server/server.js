@@ -46,6 +46,12 @@ function compareNumbers(playerNumber) {
   }
 }
 
+app.post('/reset', (req, res) => {
+  rounds = 0
+  currentNumber = generateRandomNum(25);
+  console.log(rounds, currentNumber);
+  res.sendStatus(200);
+})
 console.log(compareNumbers(1));
 function checkRound(guesses) {
   let result = {marcos:compareNumbers(Number(guesses.marcos)),

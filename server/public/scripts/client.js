@@ -64,6 +64,19 @@ function updateRounds() {
 }
 //catalogue our server results as a variable
 
+function roundReset() {
+  axios({
+    method: 'POST',
+    url: '/reset',
+  }).then((response) => {
+    console.log(response.status);
+    document.getElementById('results').innerHTML =""
+    document.getElementById('winner').innerHTML = ""
+    document.getElementById('rounds').innerHTML = "0"
+  })
+}
+
+
 function renderWinner(name) {
   document.getElementById('winner').innerHTML = 
   `
