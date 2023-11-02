@@ -1,7 +1,7 @@
 function onReady() {
   console.log("JavaScript is loaded!")
 }
-  /*Handles the submission from the form*/
+/*Handles the submission from the form*/
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -15,7 +15,7 @@ function handleSubmit(event) {
 
   /*Creating an object with the variables we created
     to hold the guess values to send to the server*/
-  let totalGuesses = { 
+  let totalGuesses = {
     marcos: Number(marcosGuess.value),
     christian: Number(christianGuess.value),
     evan: Number(evanGuess.value),
@@ -37,7 +37,7 @@ function handleSubmit(event) {
     console.log(response.data)
     let roundResult = response.data
     renderRoundResult(roundResult)
-    if(roundResult.marcos === "is correct") {
+    if (roundResult.marcos === "is correct") {
       renderWinner('MARCOS')
     } else if (roundResult.christian === "is correct") {
       renderWinner('CHRISTIAN')
@@ -48,7 +48,7 @@ function handleSubmit(event) {
     }
     updateRounds();
   })
- 
+
 }
 
 function updateRounds() {
@@ -70,22 +70,25 @@ function roundReset() {
     url: '/reset',
   }).then((response) => {
     console.log(response.status);
-    document.getElementById('results').innerHTML =""
+    document.getElementById('results').innerHTML = ""
     document.getElementById('winner').innerHTML = ""
     document.getElementById('rounds').innerHTML = "0"
+    document.getElementById('reset').setAttribute('disabled', 'disabled')
   })
 }
 
 
 function renderWinner(name) {
-  document.getElementById('winner').innerHTML = 
-  `
+  document.getElementById('winner').innerHTML =
+    `
     <h2>${name} IS THE WINNER!!</h2>
   `
-  }
+  document.getElementById('reset').removeAttribute('disabled'
+  )
+}
 
 
-function renderRoundResult(results){
+function renderRoundResult(results) {
   document.getElementById('results').innerHTML += `
     <p>Marcos ${results.marcos}</p>
     <p>Christian ${results.christian}</p>
