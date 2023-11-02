@@ -10,8 +10,16 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('server/public'));
 
 // GET & POST Routes go here
- 
+app.post('/guesses', (req, res) => {
+  console.log("POST / stuff");
 
+})
+
+function generateRandomNum(max) {
+  return Math.floor(Math.random() * max);
+}
+
+console.log(generateRandomNum(25));
 app.listen(PORT, () => {
   console.log ('Server is running on port', PORT)
 })
