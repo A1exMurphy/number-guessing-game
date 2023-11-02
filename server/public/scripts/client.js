@@ -34,14 +34,25 @@ function handleSubmit(event) {
     data: totalGuesses
   }).then((response) => {
     console.log('TO-DO');
+    console.log(response.data)
+    let roundResult = response.data
+    renderRoundResult(roundResult)
   })
-
+ 
 }
 
-function renderState(){
+//catalogue our server results as a variable
+
+
+
+function renderRoundResult(results){
   document.getElementById('results').innerHTML += `
-    <p></p>
+    <p>Marcos ${results.marcos}</p>
+    <p>Christian ${results.christian}</p>
+    <p>Evan ${results.evan}</p>
+    <p>Jaden ${results.jaden}</p>
   `
+  console.log(results);
   document.getElementById('results').innerHTML += '';
 }
 

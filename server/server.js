@@ -20,9 +20,11 @@ app.post('/guesses', (req, res) => {
   console.log("POST / stuff");
   console.log(req.body);
   let guesses = req.body;
-  res.sendStatus(201);
+  // res.sendStatus(201);
   let results = checkRound(guesses);
   console.log(results);
+
+  res.send(results);
 })
 
 function compareNumbers(playerNumber) {
