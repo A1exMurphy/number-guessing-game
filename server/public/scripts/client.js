@@ -16,10 +16,10 @@ function handleSubmit(event) {
   /*Creating an object with the variables we created
     to hold the guess values to send to the server*/
   let totalGuesses = { 
-    marcos: marcosGuess.value,
-    christian: christianGuess.value,
-    evan: evanGuess.value,
-    jaden: jadenGuess.value
+    marcos: Number(marcosGuess.value),
+    christian: Number(christianGuess.value),
+    evan: Number(evanGuess.value),
+    jaden: Number(jadenGuess.value)
   }
   marcosGuess.value = '';
   christianGuess.value = '';
