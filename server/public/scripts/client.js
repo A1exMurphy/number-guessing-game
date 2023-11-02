@@ -46,10 +46,22 @@ function handleSubmit(event) {
     } else if (roundResult.jaden === "is correct") {
       renderWinner('JADEN')
     }
+    updateRounds();
   })
  
 }
 
+function updateRounds() {
+  axios({
+    method: 'GET',
+    url: '/rounds',
+  }).then((response) => {
+    console.log(response.data);
+    let rounds = response.data.rounds;
+    document.getElementById('rounds').innerHTML = rounds;
+  })
+
+}
 //catalogue our server results as a variable
 
 function renderWinner(name) {

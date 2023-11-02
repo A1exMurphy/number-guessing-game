@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const app = express();
 const PORT = 5000;
 
+let rounds = 0
+
 function generateRandomNum(max) {
   return Math.floor(Math.random() * max);
 }
@@ -24,9 +26,15 @@ app.post('/guesses', (req, res) => {
   let results = checkRound(guesses);
   console.log(results);
 
+  rounds++
+  console.log(rounds);
+
   res.send(results);
 })
 
+app.get('/rounds', (req, res) => {
+  res.send({rounds:rounds});
+})
 function compareNumbers(playerNumber) {
   // Check if inputs are too high, low, or equal to number
   if (playerNumber === currentNumber) {
